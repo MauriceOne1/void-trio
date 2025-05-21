@@ -1,0 +1,88 @@
+samples('github:yaxu/clean-breaks')
+samples('bubo:waveforms')
+
+setcps(150/60/4)
+
+kick: s("bd*4")
+  .bank('RolandTR909')
+  .gain(1)
+  .lpf(500)
+  .crush(mousex.range(0,4))
+  .lpenv(mousey.range(0,8))
+  .punchcard({height:16,labels:1})
+amen: s("amen/4")
+  .fit()
+  .slice(8, "<1 0 2 3 [7 0] 4 6 7>*2")
+  .hush()
+
+snare: s("<sd>*2")
+  .bank('RolandTR909')
+  .gain(0.9)
+  .lpf(4000)
+  .hpf(1000)
+  ._punchcard({height:16,labels:1})
+  //.hush()
+  
+hh: s("hh*4")
+  .bank('RolandTR909')
+  .gain(0.7)
+  .hush()
+
+bass: note("<~ [b#2 e]>*4")
+  .sound("sawtooth")
+  .euclidLegato(9,16)
+  .ftype('24db')
+  .lpf(saw.rangex(5000,200).slow(4))
+  .lpenv(4)
+  .dist("2:.4")
+  .echo(2, 1/16, .7)
+  .add(note("<[0 3 5]*4 [5 2 10]*4>"))
+  .gain(0.25)
+  .hush()
+
+synth: note("<a2 e#3 b2 e#2>/4")
+  .sound("[supersaw sawtooth]/2")
+  .euclidLegato(9,16)
+  .ftype('24db')
+  .lpf(saw.rangex(2000,400).slow(8))
+  .lpenv(6)
+  .dist("2:.4")
+  .echo(2, 1/16, .7)
+  .mul(gain("[.5 1!3]*4")) //side chain
+  .add(note("<[0 3 5]*4 [5 2 10]*4>"))
+  .gain(0.3)
+  .hush()
+
+synth2: note("c2 <eb2 <g2 g1>>")
+  .fast(2)
+  .sound("sine:<32 16 8 4>")
+  .hush()
+
+vibrato: note("a e")
+  .vibmod("<.25 .5 1 2 12>:8")
+  .hush()
+
+
+
+wavetable:
+  note("<[g3,b3,e4]!2 [a3,c3,e4] [b3,d3,f#4]>")
+  .n("<1 2 3 4 5 6 7 8 9 10>/2").room(tri.rangex(0.1,4).slow(4)).size(0.9)
+  .s('wt_theremin').velocity(0.25).often(n => n.ply(2))
+  .release(0.125).decay("<0.1 0.25 0.3 0.4>").sustain(0)
+  .cutoff(2000).cutoff("<1000 2000 4000>").fast(4)
+ ._scope()
+
+
+/* 
+mouseimput: 
+  note("<d d d a a# d3 f4>*15".sub(12))
+    .gain(1).s("sawtooth").fanchor(0)
+    .lpf(mousex.range(0,1000)).lpenv(mousey.range(0,8))
+    .ftype('ladder')
+    .lpq(7).color('cyan')
+    // .drive(3)
+    .distort("1.5:.7")
+*/
+
+
+
