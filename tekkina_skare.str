@@ -14,7 +14,7 @@ TB303: note("<d d d a a# d3 f4>*16".sub(12))
 
 drums: stack(
   s("<[bd bd bd bd]!3 [bd bd bd [bd bd]]>")
-  //hush()
+  //.hush()
   .gain(0.5)
   .bank("RolandTR909")
   .lpf(3000),
