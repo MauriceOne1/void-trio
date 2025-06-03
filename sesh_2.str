@@ -1,0 +1,66 @@
+//ciao mauri
+//ciao skare
+//bak ha debuggato
+
+//QUALCUNO SALVI STA ROBA È FIGAP
+
+
+// #FREEBAK
+// lowkey meglio da telefono che da ioad
+setcps(150/60/4)
+
+//hai messo hydra!!!!!!!!!!!!
+kick: s("<bd*4>")
+  .bank("RolandTR909")
+  .gain(0.7)
+  .lpf(5000)
+// perche non funzia piu niente? LOL
+// forse perche ho cambiato environnement, sono su pc ora ero diventato demente :D
+// ho letto :D
+// dio porco
+snare: s("<sd*2>")
+  .bank("RolandTR808")
+  .gain(0.8).hpf(5000)
+
+//non capisco
+//non trovo più il play
+
+//non capisco cosa hai sbagliato
+
+boh: note("<[b2 e3 c#3 e3]*4>")
+  .lpf(sine.range(100,3000).slow(4))
+  .gain(0.5)
+  .distort(2)
+  
+  //.hush()
+
+
+// guyz ho trovato un modo per aggiungere randomicita al codice
+// lascio qua un esempio
+// note("c2 g2!2 d2 f1").s(choose("sine", "triangle", "bd:6"))
+// è il costrutto CHOOSE
+// https://strudel.cc/learn/random-modifiers/
+
+
+hihat: s("hh*16").bank("RolandTR909").gain(0.3)
+
+// c e g mettili diesis
+// fai pure
+// non capisco perche non prende l'espressione
+
+// è copiato o scritto?
+// dalla documentazione
+// pero non mi prende gain
+
+melody: note("<[[c#4 f4 g#4 c#5]*2]!4 [[c#4 f4 g#4 c5]*2]!4>")
+  .gain(0.4)
+  .cutoff(0.7)
+  .resonance(0.9)
+  .delay(0.25)
+  .delayfeedback(0.4)
+  .lpf(sine.range(800, 3000).slow(8))
+  .slide(0.02)
+  .slow(2)
+
+// non mi va lo snare xD
+// diocane manca UNA D in Roland
